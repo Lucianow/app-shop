@@ -27,11 +27,11 @@
                             <thead>
                             <tr>
                                 <th class="text-center">#</th>
-                                <th>Nome</th>
-                                <th>Descrição</th>
+                                <th class="col-md-2">Nome</th>
+                                <th class="col-md-4">Descrição</th>
                                 <th>Categoria</th>
                                 <th class="text-right">Preço</th>
-                                <th class="text-right">Ação</th>
+                                <th class="text-center">Ação</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -81,36 +81,6 @@
 
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <nav class="pull-left">
-                <ul>
-                    <li>
-                        <a href="http://www.creative-tim.com">
-                            Creative Tim
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://presentation.creative-tim.com">
-                            About Us
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://blog.creative-tim.com">
-                            Blog
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://www.creative-tim.com/license">
-                            Licenses
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="copyright pull-right">
-                &copy; 2016, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com" target="_blank">Creative Tim</a>
-            </div>
-        </div>
-    </footer>
+    @include('includes.footer')
 
 @endsection
