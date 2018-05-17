@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -19,6 +20,7 @@ class ProductController extends Controller
             else
                 $imagesRight->push($image);
         }
+        $notification = 'O produto foi incluído em seu Carro de Compras com sucesso!';
         return view('products.show')->with(compact('product', 'imagesLeft', 'imagesRight'));
     }
 }
