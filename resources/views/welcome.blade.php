@@ -20,36 +20,49 @@
             display: flex;
             flex-direction: column;
         }
-        .tt-query {
-            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-            -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        .tt-query, /* UPDATE: newer versions use tt-input instead of tt-query */
+        .tt-hint {
+            width: 396px;
+            height: 30px;
+            padding: 8px 12px;
+            font-size: 24px;
+            line-height: 30px;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+        }
+
+        .tt-query { /* UPDATE: newer versions use tt-input instead of tt-query */
             box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
         }
+
         .tt-hint {
-            color: #999
+            color: #999;
         }
-        .tt-menu {    /* used to be tt-dropdown-menu in older versions */
-            width: 222px;
-            margin-top: 4px;
-            padding: 4px 0;
+
+        .tt-menu { /* UPDATE: newer versions use tt-menu instead of tt-dropdown-menu */
+            width: 422px;
+            margin-top: 12px;
+            padding: 8px 0;
             background-color: #fff;
             border: 1px solid #ccc;
             border: 1px solid rgba(0, 0, 0, 0.2);
-            -webkit-border-radius: 4px;
-            -moz-border-radius: 4px;
-            border-radius: 4px;
-            -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
-            -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+            border-radius: 8px;
             box-shadow: 0 5px 10px rgba(0,0,0,.2);
         }
+
         .tt-suggestion {
             padding: 3px 20px;
+            font-size: 18px;
             line-height: 24px;
         }
-        .tt-suggestion.tt-cursor,.tt-suggestion:hover {
+
+        .tt-suggestion.tt-is-under-cursor { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
             color: #fff;
             background-color: #0097cf;
+
         }
+
         .tt-suggestion p {
             margin: 0;
         }
@@ -117,33 +130,37 @@
             </div>
 
             <div class="section text-center">
-                <h2 class="title">Produtos Disponíveis</h2>
+                <h2 class="title">Visite nossas Categorias</h2>
+
+
+                    <form class="form-inline" method="get" action="{{ url('/search') }}" >
+                        <input type="text" placeholder="Encontrar Produtos" class="form-control" name="query" id="search" >
+                        <button class="btn btn-primary btn-just-icon ">
+                            <i class="material-icons">search</i>
+                        </button>
+                    </form>
+
+
 
                 <div class="team">
                     <div class="row">
-                        @foreach($products as $product)
+                        @foreach($categories as $category)
                             <div class="col-md-4">
                                 <div class="team-player">
-                                    <a href="{{ url('/products/'.$product->id) }}">
-                                        <img src="{{ $product->featured_image_url }}" alt="Thumbnail Image" class="img-raised img-circle">
+                                    <a href="{{ url('/categories/'.$category->id) }}">
+                                        <img src="{{ $category->featured_image_url }}" alt="Thumbnail Image" class="img-raised img-circle">
                                     </a>
                                     <h4 class="title">
-                                        <a href="{{ url('/products/'.$product->id) }}">{{ strtoupper($product->name) }}</a>
+                                        <a href="{{ url('/categories/'.$category->id) }}">{{ strtoupper($category->name) }}</a>
                                         <br />
-                                        {{--<small class="text-muted">R$ {{ number_format($product->price, '2', ',', '.') }}</small>--}}
-                                        <small class="text-muted">{{ $product->category ? $product->category->name : 'Geral' }}</small>
+
                                     </h4>
-                                    <p>{{ $product->description }}</p>
-                                    <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-google-plus"></i></a>
-                                    <a href="#pablo" class="btn btn-simple btn-just-icon"><i class="fa fa-youtube-play"></i></a>
-                                    <a href="#pablo" class="btn btn-simple btn-just-icon btn-default"><i class="fa fa-twitter"></i></a>
+                                    <p>{{ $category->description }}</p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                    <div class="text-center">
-                        {{ $products->links() }}
-                    </div>
+
                 </div>
 
             </div>
@@ -154,20 +171,20 @@
                     <div class="col-md-8 col-md-offset-2">
                         <h2 class="text-center title">Faça seu cadastro</h2>
                         <h4 class="text-center description">Cadastre-se no App-Shop, e receba as novidades e atualizações toda semana!</h4>
-                        <form class="contact-form">
+                        <form class="contact-form" method="get" action="{{ route('register') }}">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Nome</label>
-                                        <input type="text" class="form-control" name="name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group label-floating">
-                                        <label class="control-label">Email</label>
-                                        <input type="email" class="form-control" name="email">
-                                    </div>
-                                </div>
+                                {{--<div class="col-md-6">--}}
+                                    {{--<div class="form-group label-floating">--}}
+                                        {{--<label class="control-label">Nome</label>--}}
+                                        {{--<input type="text" class="form-control" name="name">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="col-md-6">--}}
+                                    {{--<div class="form-group label-floating">--}}
+                                        {{--<label class="control-label">Email</label>--}}
+                                        {{--<input type="email" class="form-control" name="email">--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
 
 
@@ -186,7 +203,30 @@
         </div>
 
     </div>
-
-    @include('includes.footer')
-
+@include('includes.footer')
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('js/typeahead.bundle.min.js') }}"></script>
+    <script>
+        $(function(){
+            //
+            var products = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                prefetch: '{{ url("/products/json") }}'
+            });
+
+            //iniciar o Typeahead no campo de busca
+            $('#search').typeahead({
+                hint: true,
+                highlight: true,
+                minLength: 1
+            },{
+                name: 'products',
+                source: products
+            });
+        });
+    </script>
+@endsection
+

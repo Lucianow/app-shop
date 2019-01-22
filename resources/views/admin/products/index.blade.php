@@ -40,7 +40,7 @@
                                     <td class="text-center">{{ $product->id }}</td>
                                     <td class="text-left">{{ $product->name }}</td>
                                     <td class="text-left">{{ $product->description }}</td>
-                                    <td class="text-left">{{ $product->category ? $product->category->name : 'Geral'}}</td>
+                                    <td class="text-left">{{ $product->category_name}}</td>
                                     <td class="text-right">R$ {{ number_format($product->price, '2', ',', '.') }}</td>
                                     <td class="td-actions text-right">
 

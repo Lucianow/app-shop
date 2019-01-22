@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title' , 'Benvindo a App-Shop')
+@section('title' , 'Criar Produtos App-Shop')
 
 @section('body-class', 'product-page')
 
@@ -48,10 +48,27 @@
                         </div>
                     </div>
 
-                    <div class="form-group label-floating">
-                        <label class="control-label">Descrição do produto</label>
-                        <input type="text" class="form-control" name="description" value="{{ old('description') }}">
+                    <div class="row">
+                        <div class="form-group label-floating col-sm-6">
+                            <label class="control-label">Descrição do produto</label>
+                            <input type="text" class="form-control" name="description" value="{{ old('description') }}">
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group label-floating">
+                                <label class="control-label">Categorias</label>
+                                <select class="form-control" name="category_id">
+                                    <option value="0">Genérico</option>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
+
+
 
                     <textarea class="form-control" placeholder="Descrição detalhada do produto" rows="5" name="long_description">{{ old('long_description') }}</textarea>
 
