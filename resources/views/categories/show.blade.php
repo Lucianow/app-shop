@@ -58,9 +58,12 @@
                 </div>
 
                 <div class="section text-center">
-
+                    <div class="title text-center">
+                        <h3>Produtos</h3>
+                    </div>
                     <div class="team">
                     <div class="row">
+
                         @foreach($products as $product)
                             <div class="col-md-4">
                                 <div class="team-player">

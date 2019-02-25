@@ -18,7 +18,7 @@
 
                         <div class="name">
                             <h3 class="title">{{ $product->name }}</h3>
-                            <h6>{{ $product->category->name }}</h6>
+                            <h6>Categoria: <strong>{{ $product->category->name }}</strong></h6>
                         </div>
 
 
@@ -30,8 +30,8 @@
                     </div>
                 </div>
                 <div class="description text-center">
-                    <p>R$ {{ $product->price }}</p>
-                    <p>{{ $product->long_description }}</p>
+                    <h3>R$ <span class="text-danger"><strong>{{ $product->price }}</strong></span> </h3>
+                    <h4><strong>Descrição: </strong>{{ $product->long_description }}</h4>
                 </div>
 
                 <div class="text-center">
